@@ -1,0 +1,197 @@
+*,
+*::after,
+*::before {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+/* setting up animations with @keyframes keyword and naming it moveInLeft */
+@keyframes moveInLeft {
+  0% {
+    /* setting opacity starts at 0 or invisible and ends completely visible */
+    opacity: 0;
+    /* we want the element to be more on the left in the beginning by using the transform property */
+    transform: translate(-10rem) rotate(-180deg); }
+  /* adding the bounce to the animation by making it move to the right of center at 80% and then back to center at 100% */
+  80% {
+    transform: translate(2rem); }
+  100% {
+    opacity: 1;
+    /* we want the element to end in the center by setting tranform to 0 */
+    transform: translate(0) rotate(0deg); } }
+
+@keyframes moveInRight {
+  0% {
+    /* setting opacity starts at 0 or invisible and ends completely visible */
+    opacity: 0;
+    /* we want the element to be more on the left in the beginning by using the transform property */
+    transform: translate(10rem); }
+  /* adding the bounce to the animation by making it move to the right of center at 80% and then back to center at 100% */
+  80% {
+    transform: translate(-2rem); }
+  100% {
+    opacity: 1;
+    /* we want the element to end in the center by setting tranform to 0 */
+    transform: translate(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    /* setting opacity starts at 0 or invisible and ends completely visible */
+    opacity: 0;
+    /* we want the element to be more on the left in the beginning by using the transform property */
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    /* we want the element to end in the center by setting tranform to 0 */
+    transform: translateY(0); } }
+
+body {
+  /* allowed to import font Lato because imported it from google on the html page */
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  /* giving white border around whole page */
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* determines whether the element is visible or hidden during an animation */
+  backface-visibility: hidden;
+  /* adding margin between text and button */
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 4.5rem;
+    /* linking moveInLeft @keyframe to the header */
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    /* set how fast or slow animations proceed */
+    animation-timing-function: ease-out;
+    /* how to make animation repeat
+          animation-iteration-count: 3; */
+    /* how to delay animation
+          animation-delay: 3s; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 1.49rem;
+    /* linking moveInLeft @keyframe to the header */
+    animation: moveInRight 1s ease-out; }
+
+.btn {
+  /* link is the pseudoclass ie hover there are many pseudo classes*/
+  /* moves button up on hover */
+  /* moves button down on click */
+  /* add element that is identical to the button and put it behind the button. when we hover off the button the element goes behind the button */
+  /* ::after is treated like a child of the button  with respect to height and width*/
+  /* after pseudo element on the hover state */ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 20rem;
+    /* transitions are activated with the hover and active states */
+    transition: all 0.2s;
+    position: relative; }
+  .btn:hover {
+    transform: translateY(-3px);
+    /* shadow will be 10px down, 20px is the blur */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      /* scale increases the element */
+      transform: scaleX(1.4) scaleY(1.6);
+      /* opacity 0 sets the after element to invisible when the transition is done from &::after class */
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    /* to put element behind button we use position absulte */
+    /* positions itself relative to the last element that has a position: relative; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* pushes element behind button */
+    z-index: -1;
+    transition: all 0.4s; }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    /* automaticall applies the styles of the animation moveInBottom before animation starts */
+    animation-fill-mode: backwards; }
+
+.row {
+  max-width: 114rem;
+  background-color: red;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2);
+    background-color: orange;
+    float: left; }
+    .row .col-1-of-2:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+
+.header {
+  /* makes the height of the header class take up 95% of the view height */
+  height: 95vh;
+  /* adding gradient to background image. You can add multiple backgrounds by separating with comma. css reads right to left, so since we want the image to be in the back we add it last */
+  /* linear-gradient takes up to 3 parameters. the last 2 are the colors, the first optional parameter is telling it which direction to display gradient. ie.. to right */
+  /* hover over the color picker to to access the color panel. bring down the slider to decrease the opacity */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.443), rgba(40, 180, 133, 0.412)), url(../img/hero.jpg);
+  background-size: cover;
+  /* makes the background image stay at the top of the page */
+  background-position: top;
+  /* clip-path allows us to create shapes in the page, the polygon() function takes coordinate parameters corresponding to the shape*/
+  /* the shape is read from top left clockwise */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* setting origin from which top and left from .logo-box will count */
+  position: relative; }
+  .header__logo-box {
+    position: absolute;
+    /* positioning logo 40 px from left and top */
+    top: 4rem;
+    left: 4rem; }
+  .header__text-box {
+    /* we use absolute positioning to center the text */
+    position: absolute;
+    /* top and left and relative to the parent element */
+    top: 45%;
+    left: 50%;
+    /* transforms the element relative to the element itself */
+    transform: translate(-50%, -50%);
+    text-align: center; }
+  .header__logo {
+    height: 3.5rem; }
+    .header__logo:hover {
+      animation: moveInRight 1s ease-out; }
+
+/* setting animation when mouse hovers over the logo */

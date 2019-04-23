@@ -1,0 +1,28 @@
+.row {
+    max-width: $grid-width;
+    background-color: red;
+    margin: 0 auto;
+
+    //allpies margin-bottom to everython but last child
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;
+    }
+    
+    //adding mixin clearfix from mixins.scss
+    @include clearfix;
+
+    .col-1-of-2 {
+        width: calc((100% - #{$gutter-horizontal}) / 2);
+        background-color: orange;
+        float: left; 
+
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    .col-1-of-3 {
+        //minus 2 time gutter horzontal because there are 2 elements that will be adding margin-right to the element
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+    }
+}

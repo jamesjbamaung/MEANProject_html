@@ -1,0 +1,71 @@
+.btn {
+    /* link is the pseudoclass ie hover there are many pseudo classes*/
+    &:link,
+    &:visited {
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1.5rem 4rem;
+      display: inline-block;
+      border-radius: 20rem;
+      /* transitions are activated with the hover and active states */
+      transition: all 0.2s;
+  
+      position: relative;
+    }
+  
+    /* moves button up on hover */
+    &:hover {
+      transform: translateY(-3px);
+      /* shadow will be 10px down, 20px is the blur */
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+      &::after {
+          /* scale increases the element */
+          transform: scaleX(1.4) scaleY(1.6);
+          /* opacity 0 sets the after element to invisible when the transition is done from &::after class */
+          opacity: 0;
+        }
+    }
+  
+    /* moves button down on click */
+    &:active {
+      transform: translateY(-1px);
+      box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
+    }
+  
+    /* add element that is identical to the button and put it behind the button. when we hover off the button the element goes behind the button */
+    /* ::after is treated like a child of the button  with respect to height and width*/
+    &::after {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border-radius: 10rem;
+      /* to put element behind button we use position absulte */
+      /* positions itself relative to the last element that has a position: relative; */
+      position: absolute;
+      top: 0;
+      left: 0;
+      /* pushes element behind button */
+      z-index: -1;
+  
+      transition: all 0.4s;
+    }
+  
+    /* after pseudo element on the hover state */
+  
+  
+    &--white {
+      background-color: $color-white;
+      color: $color-gray-dark;
+      &::after {
+          background-color: $color-white;
+        }
+    }
+  
+    &--animated {
+      animation: moveInBottom 0.5s ease-out 0.75s;
+      /* automaticall applies the styles of the animation moveInBottom before animation starts */
+      animation-fill-mode: backwards;
+    }
+  }
+  

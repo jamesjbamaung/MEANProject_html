@@ -1,0 +1,54 @@
+/* setting up animations with @keyframes keyword and naming it moveInLeft */
+@keyframes moveInLeft {
+    0% {
+      /* setting opacity starts at 0 or invisible and ends completely visible */
+      opacity: 0;
+      /* we want the element to be more on the left in the beginning by using the transform property */
+      transform: translate(-10rem) rotate(-180deg);
+    }
+    /* adding the bounce to the animation by making it move to the right of center at 80% and then back to center at 100% */
+    80% {
+      transform: translate(2rem);
+    }
+  
+    100% {
+      opacity: 1;
+      /* we want the element to end in the center by setting tranform to 0 */
+      transform: translate(0) rotate(0deg);
+    }
+  }
+  
+  @keyframes moveInRight {
+    0% {
+      /* setting opacity starts at 0 or invisible and ends completely visible */
+      opacity: 0;
+      /* we want the element to be more on the left in the beginning by using the transform property */
+      transform: translate(10rem);
+    }
+    /* adding the bounce to the animation by making it move to the right of center at 80% and then back to center at 100% */
+    80% {
+      transform: translate(-2rem);
+    }
+  
+    100% {
+      opacity: 1;
+      /* we want the element to end in the center by setting tranform to 0 */
+      transform: translate(0);
+    }
+  }
+  
+  @keyframes moveInBottom {
+    0% {
+      /* setting opacity starts at 0 or invisible and ends completely visible */
+      opacity: 0;
+      /* we want the element to be more on the left in the beginning by using the transform property */
+      transform: translateY(3rem);
+    }
+  
+    100% {
+      opacity: 1;
+      /* we want the element to end in the center by setting tranform to 0 */
+      transform: translateY(0);
+    }
+  }
+  

@@ -1,0 +1,56 @@
+.header {
+    /* makes the height of the header class take up 95% of the view height */
+    height: 95vh;
+    /* adding gradient to background image. You can add multiple backgrounds by separating with comma. css reads right to left, so since we want the image to be in the back we add it last */
+    /* linear-gradient takes up to 3 parameters. the last 2 are the colors, the first optional parameter is telling it which direction to display gradient. ie.. to right */
+    /* hover over the color picker to to access the color panel. bring down the slider to decrease the opacity */
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.443),
+        rgba($color-primary-dark, 0.412)
+      ),
+      url(../img/hero.jpg);
+    background-size: cover;
+    /* makes the background image stay at the top of the page */
+    background-position: top;
+    /* clip-path allows us to create shapes in the page, the polygon() function takes coordinate parameters corresponding to the shape*/
+    /* the shape is read from top left clockwise */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /* setting origin from which top and left from .logo-box will count */
+    position: relative;
+  
+    &__logo-box {
+      position: absolute;
+      /* positioning logo 40 px from left and top */
+      top: 4rem;
+      left: 4rem;
+    }
+    &__text-box {
+      /* we use absolute positioning to center the text */
+      position: absolute;
+      /* top and left and relative to the parent element */
+      top: 45%;
+      left: 50%;
+      /* transforms the element relative to the element itself */
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+  
+    &__logo {
+      height: 3.5rem;
+      &:hover {
+        animation: moveInRight 1s ease-out;
+      }
+    }
+  }
+  
+  //   .header__logo-box {
+  //     position: absolute;
+  //     /* positioning logo 40 px from left and top */
+  //     top: 40px;
+  //     left: 40px;
+  //   }
+  
+  /* setting animation when mouse hovers over the logo */
+  
+  
